@@ -68,7 +68,6 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -122,3 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc026836b47d8f4280edb6aad1d6118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LootBullet: {fileID: 5652728577293699141, guid: 6054cacafd333ad419015f7a0aa59494,
+    type: 3}

@@ -8,11 +8,22 @@ public class Shooting : MonoBehaviour
   public GameObject BulletEmitter;
   public GameObject Bullet;
   public float force = 500f;
+
+  private BulletCounter bulletCounter = null;
+
+  private void Start()
+  {
+
+  }
   void Update()
   {
-    if (Input.GetKeyDown(KeyCode.Space))
+    if (bulletCounter == null)
     {
-      Debug.Log("Fire!");
+      bulletCounter = GameObject.FindGameObjectWithTag("BulletCounter").GetComponent<BulletCounter>();
+    }
+    if (Input.GetKeyDown(KeyCode.Space) && bulletCounter.CanShoot())
+    {
+      bulletCounter.Shoot();
       GameObject TempBullet;
       TempBullet = Instantiate(Bullet, BulletEmitter.transform.position, BulletEmitter.transform.rotation) as GameObject;
       Rigidbody TempGigidbody = TempBullet.GetComponent<Rigidbody>();
@@ -20,4 +31,7 @@ public class Shooting : MonoBehaviour
       Destroy(TempBullet, 3f);
     }
   }
+
+
+
 }

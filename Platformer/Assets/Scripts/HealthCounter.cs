@@ -5,31 +5,41 @@ using UnityEngine.UI;
 
 public class HealthCounter : MonoBehaviour
 {
-    public float hp;
-    public Text hpCounter;
-    Rigidbody player;
+  public float hp;
+  public Text hpCounter;
+  Rigidbody player;
 
-    void Start()
+  private BulletCounter bulletCounter = null;
+
+  void Start()
+  {
+    hp = 15f;
+    player = GetComponent<Rigidbody>();
+  }
+
+  // Update is called once per frame
+  void Update()
+  {
+    hpCounter.text = "HP: " + hp;
+  }
+
+
+  void OnCollisionEnter(Collision enterer)
+  {
+    if (enterer.gameObject.tag == "Enemy")
     {
-        hp = 15f;
-        player = GetComponent<Rigidbody>();
+      hp--;
+      player.AddForce(enterer.transform.forward * 500f);
     }
-
-    // Update is called once per frame
-    void Update()
+    else if (enterer.gameObject.tag == "BulletLoot")
     {
-        //hpCounter.text = "HP: " + hp;
-        
+      Destroy(enterer.gameObject, 0f);
+      if (bulletCounter == null)
+      {
+        bulletCounter = GameObject.FindGameObjectWithTag("BulletCounter").GetComponent<BulletCounter>();
+      }
+      bulletCounter.CollectBullet();
     }
-
-
-    void OnCollisionEnter(Collision enterer)
-    {
-        if(enterer.gameObject.tag == "Enemy")
-        {
-            hp--;
-            player.AddForce(enterer.transform.forward * 500f);
-        }
-    }
+  }
 
 }

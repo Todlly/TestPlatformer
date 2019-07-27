@@ -18,6 +18,6 @@ public class EnemCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //counter.text = "Enemies killed: " + count;
+        counter.text = "Enemies killed: " + count;
     }
 }
