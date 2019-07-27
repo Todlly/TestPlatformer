@@ -9,15 +9,21 @@ public class Shooting : MonoBehaviour
   public GameObject Bullet;
   public float force = 500f;
 
+  private BulletCounter bulletCounter = null;
+
   private void Start()
   {
 
   }
   void Update()
   {
-    if (Input.GetKeyDown(KeyCode.Space) && GameObject.FindGameObjectWithTag("BulletCounter").GetComponent<BulletCounter>().Bullets > 0)
+    if (bulletCounter == null)
     {
-      GameObject.FindGameObjectWithTag("BulletCounter").GetComponent<BulletCounter>().Bullets--;
+      bulletCounter = GameObject.FindGameObjectWithTag("BulletCounter").GetComponent<BulletCounter>();
+    }
+    if (Input.GetKeyDown(KeyCode.Space) && bulletCounter.CanShoot())
+    {
+      bulletCounter.Shoot();
       GameObject TempBullet;
       TempBullet = Instantiate(Bullet, BulletEmitter.transform.position, BulletEmitter.transform.rotation) as GameObject;
       Rigidbody TempGigidbody = TempBullet.GetComponent<Rigidbody>();

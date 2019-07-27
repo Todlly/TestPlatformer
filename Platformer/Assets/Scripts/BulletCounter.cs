@@ -6,17 +6,32 @@ using UnityEngine.UI;
 public class BulletCounter : MonoBehaviour
 {
   Text counter;
-  public int Bullets;
+  private int bullets;
   // Start is called before the first frame update
   void Start()
   {
-    Bullets = 3;
+    bullets = 3;
     counter = GetComponent<Text>();
   }
 
   // Update is called once per frame
   void Update()
   {
-    counter.text = "Bullets: " + Bullets;
+    counter.text = "Bullets: " + bullets;
+  }
+
+  public bool CanShoot()
+  {
+    return bullets > 0;
+  }
+
+  public void Shoot()
+  {
+    bullets--;
+  }
+
+  public void CollectBullet()
+  {
+    bullets++;
   }
 }
