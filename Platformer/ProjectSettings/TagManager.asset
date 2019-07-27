@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - EnemyCounter
   - Gun
+  - BulletCounter
+  - BulletLoot
   layers:
   - Default
   - TransparentFX

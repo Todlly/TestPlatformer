@@ -18,7 +18,7 @@ public class HealthCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //hpCounter.text = "HP: " + hp;
+        hpCounter.text = "HP: " + hp;
         
     }
 
@@ -29,7 +29,11 @@ public class HealthCounter : MonoBehaviour
         {
             hp--;
             player.AddForce(enterer.transform.forward * 500f);
-        }
+        }else if(enterer.gameObject.tag == "BulletLoot")
+    {
+      Destroy(enterer.gameObject, 0f);
+      GameObject.FindGameObjectWithTag("BulletCounter").GetComponent<BulletCounter>().Bullets++;
+    }
     }
 
 }
