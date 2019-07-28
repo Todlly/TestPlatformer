@@ -19,7 +19,7 @@ public class Shooting : MonoBehaviour
   {
     if (bulletCounter == null)
     {
-      bulletCounter = GameObject.FindGameObjectWithTag("BulletCounter").GetComponent<BulletCounter>();
+      bulletCounter = GameObject.FindObjectOfType<BulletCounter>();
     }
     if (Input.GetKeyDown(KeyCode.Space) && bulletCounter.CanShoot())
     {
