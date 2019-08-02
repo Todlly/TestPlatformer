@@ -5,41 +5,44 @@ using UnityEngine.UI;
 
 public class HealthCounter : MonoBehaviour
 {
-  public float hp;
-  public Text hpCounter;
-  Rigidbody player;
+    public float hp;
+    public Text hpCounter;
+    Rigidbody player;
 
-  private BulletCounter bulletCounter = null;
+    private BulletCounter bulletCounter = null;
 
-  void Start()
-  {
-    hp = 15f;
-    player = GetComponent<Rigidbody>();
-  }
-
-  // Update is called once per frame
-  void Update()
-  {
-    hpCounter.text = "HP: " + hp;
-  }
-
-
-  void OnCollisionEnter(Collision enterer)
-  {
-    if (enterer.gameObject.tag == "Enemy")
+    void Start()
     {
-      hp--;
-      player.AddForce(enterer.transform.forward * 500f);
+        hp = 15f;
+        player = GetComponent<Rigidbody>();
     }
-    else if (enterer.gameObject.tag == "BulletLoot")
-    {
-      Destroy(enterer.gameObject, 0f);
-      if (bulletCounter == null)
-      {
-        bulletCounter = GameObject.FindGameObjectWithTag("BulletCounter").GetComponent<BulletCounter>();
-      }
-      bulletCounter.CollectBullet();
-    }
-  }
 
+    void Update()
+    {
+        hpCounter.text = "HP: " + hp;
+    }
+
+
+    void OnCollisionEnter(Collision enterer)
+    {
+        if (enterer.gameObject.tag == "Enemy")
+        {
+            GainDamage(enterer.gameObject.GetComponent<Enemy>());
+        }
+        else if (enterer.gameObject.tag == "BulletLoot")
+        {
+            Destroy(enterer.gameObject, 0f);
+            if (bulletCounter == null)
+            {
+                bulletCounter = GameObject.FindGameObjectWithTag("BulletCounter").GetComponent<BulletCounter>();
+            }
+            bulletCounter.CollectBullet();
+        }
+    }
+
+    public void GainDamage(Enemy enemy)
+    {
+        hp -= enemy.damage;
+        player.AddForce(enemy.transform.forward * 500f);
+    }
 }

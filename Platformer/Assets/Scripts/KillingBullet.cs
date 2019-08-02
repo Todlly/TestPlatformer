@@ -5,32 +5,27 @@ using UnityEngine.UI;
 
 public class KillingBullet : MonoBehaviour
 {
-  Rigidbody Bullet;
-  public GameObject LootBullet;
-  // Start is called before the first frame update
-  void Start()
-  {
-    Bullet = GetComponent<Rigidbody>();
-  }
+    Rigidbody Bullet;
+    public GameObject LootBullet;
 
-  void OnCollisionEnter(Collision collision)
-  {
-    if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Gun" && collision.gameObject.tag != "BulletLoot")
-      Destroy(Bullet.gameObject, 0f);
-    if (collision.gameObject.tag == "Enemy")
+    void Start()
     {
-      Destroy(collision.gameObject, 0f);
-      GameObject.FindGameObjectWithTag("EnemyCounter").GetComponent<EnemCounter>().count += 1;
-      if (Random.value < 0.4f)
-      {
-        GameObject TempLoot = Instantiate(LootBullet, collision.transform.position - new Vector3(0f, 0.5f, 0f), collision.transform.rotation);
-      }
+        Bullet = GetComponent<Rigidbody>();
     }
-  }
 
-  void Update()
-  {
-    
-  }
-
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Gun" && collision.gameObject.tag != "BulletLoot")
+            Destroy(Bullet.gameObject, 0f);
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            Destroy(collision.gameObject, 0f);
+            GameObject.FindGameObjectWithTag("EnemyCounter").GetComponent<EnemCounter>().count += 1;
+            if (Random.value >= enemy.lootChance)
+            {
+                GameObject TempLoot = Instantiate(LootBullet, collision.transform.position - new Vector3(0f, 0.5f, 0f), collision.transform.rotation);
+            }
+        }
+    }
 }
