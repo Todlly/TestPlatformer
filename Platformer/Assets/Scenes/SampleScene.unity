@@ -1961,6 +1961,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 139418355885813406, guid: 231807756fe3754428ea8f3f8bd8d0fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 139418355885813414, guid: 231807756fe3754428ea8f3f8bd8d0fb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2021,6 +2026,31 @@ PrefabInstance:
       propertyPath: hpCounter
       value: 
       objectReference: {fileID: 895109660}
+    - target: {fileID: 139418357286232550, guid: 231807756fe3754428ea8f3f8bd8d0fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 139418357490502431, guid: 231807756fe3754428ea8f3f8bd8d0fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 139418357811252671, guid: 231807756fe3754428ea8f3f8bd8d0fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 139418356995004999, guid: 231807756fe3754428ea8f3f8bd8d0fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 139418357731413308, guid: 231807756fe3754428ea8f3f8bd8d0fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 231807756fe3754428ea8f3f8bd8d0fb, type: 3}
 --- !u!1001 &1586808649247181440
