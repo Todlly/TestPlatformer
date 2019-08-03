@@ -6,7 +6,7 @@ public class GreenEnemy : Enemy
 {
     public void Start()
     {
-        hp = 1;
+        hp = 10;
         damage = 5;
         lootChance = 0.5f;
     }
