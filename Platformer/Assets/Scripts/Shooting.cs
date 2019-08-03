@@ -11,17 +11,13 @@ public class Shooting : MonoBehaviour
 
   private BulletCounter bulletCounter = null;
 
-  private void Start()
-  {
-
-  }
   void Update()
   {
     if (bulletCounter == null)
     {
-      bulletCounter = GameObject.FindGameObjectWithTag("BulletCounter").GetComponent<BulletCounter>();
+      bulletCounter = GameObject.FindObjectOfType<BulletCounter>();
     }
-    if (Input.GetKeyDown(KeyCode.Space) && bulletCounter.CanShoot())
+    if (Input.GetMouseButtonDown(0) && bulletCounter.CanShoot())
     {
       bulletCounter.Shoot();
       GameObject TempBullet;

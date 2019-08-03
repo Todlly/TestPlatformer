@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4695443265691289741}
   - component: {fileID: 4695443265691289740}
   - component: {fileID: 4695443265691289739}
-  - component: {fileID: 4695443265691289736}
+  - component: {fileID: 3813944604524180892}
   m_Layer: 0
   m_Name: Sword 1
   m_TagString: Untagged
@@ -113,7 +113,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4695443265691289736
+--- !u!114 &3813944604524180892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,6 +122,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4695443265691289742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e6199f28193b4a4380bfb6bef7aada6, type: 3}
+  m_Script: {fileID: 11500000, guid: 09bab3cace3579a438ca6d8df6b9f440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  LootBullet: {fileID: 0}
