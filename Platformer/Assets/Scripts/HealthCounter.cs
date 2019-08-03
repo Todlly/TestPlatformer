@@ -9,7 +9,6 @@ public class HealthCounter : MonoBehaviour
     public Text hpCounter;
     Rigidbody player;
 
-    private BulletCounter bulletCounter = null;
 
     void Start()
     {
@@ -28,15 +27,6 @@ public class HealthCounter : MonoBehaviour
         if (enterer.gameObject.tag == "Enemy")
         {
             GainDamage(enterer.gameObject.GetComponent<Enemy>());
-        }
-        else if (enterer.gameObject.tag == "BulletLoot")
-        {
-            Destroy(enterer.gameObject, 0f);
-            if (bulletCounter == null)
-            {
-                bulletCounter = GameObject.FindGameObjectWithTag("BulletCounter").GetComponent<BulletCounter>();
-            }
-            bulletCounter.CollectBullet();
         }
     }
 

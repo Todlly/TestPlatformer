@@ -8,6 +8,15 @@ public class Enemy : MonoBehaviour
     public int damage;
     public float lootChance;
     public GameObject loot;
+    Animator anim;
+
+    private void Update()
+    {
+        if(anim == null)
+        {
+            anim = GetComponentInChildren<Animator>();
+        }
+    }
 
     public void Drop()
     {
@@ -15,5 +24,10 @@ public class Enemy : MonoBehaviour
         {
             _ = Instantiate(loot, gameObject.transform.position - new Vector3(0f, 0.5f, 0f), gameObject.transform.rotation);
         }
+    }
+
+    public void TakeDamage()
+    {
+        anim.SetTrigger("TakeDamage");
     }
 }
