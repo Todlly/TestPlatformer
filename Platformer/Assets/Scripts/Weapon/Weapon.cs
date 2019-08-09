@@ -26,6 +26,7 @@ public class Weapon : MonoBehaviour
     {
         if (enemy.hp - damage > 0)
         {
+            enemy.TakeDamage();
             enemy.hp -= damage;
         }
         else
