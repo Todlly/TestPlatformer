@@ -32,7 +32,21 @@ public class HealthCounter : MonoBehaviour
 
     public void GainDamage(Enemy enemy)
     {
-        hp -= enemy.damage;
-        player.AddForce(enemy.transform.forward * 500f);
+        if (hp - enemy.damage > 0)
+        {
+            hp -= enemy.damage;
+            player.AddForce(enemy.transform.forward * 500f);
+        }
+        else
+        {
+            KillPlayer();
+        }
+    }
+
+    void KillPlayer()
+    {
+        hp = 0;
+        player.gameObject.GetComponent<PlayerMove>().Die();
+        GameObject.FindObjectOfType<PauseMenu>().EndGame();
     }
 }

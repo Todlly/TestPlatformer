@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject endMenu;
     private Shooting shooter;
     private bool isPaused;
 
@@ -33,6 +34,7 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
+
     public void QuitToMenu()
     {
         SceneManager.LoadScene(0);
@@ -54,4 +56,21 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
     }
 
+    public void EndGame()
+    {
+        Invoke("GetEndMenu", 0.35f);
+    }
+
+    void GetEndMenu()
+    {
+        Debug.Log("Getting Menu");
+        endMenu.SetActive(true);
+        Time.timeScale = 0f;
+        shooter.enabled = false;
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
